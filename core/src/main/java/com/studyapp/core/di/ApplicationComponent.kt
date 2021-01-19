@@ -1,4 +1,4 @@
-package com.eniola.studyapp.base
+package com.studyapp.core.di
 
 /**
  * Copyright (c) 2021 Eniola Ipoola
@@ -6,4 +6,4 @@ package com.eniola.studyapp.base
  * Created on 19-Jan-2021
  */
 
-open class BaseActivity {}
+interface ApplicationComponent : AndroidInjector<StudyApp> {}
