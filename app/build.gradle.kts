@@ -1,15 +1,14 @@
 plugins {
     id("com.android.application")
-    id("kotlin-android")
     kotlin("android")
     kotlin("kapt")
     kotlin("android.extensions")
     id("androidx.navigation.safeargs.kotlin")
+    id("kotlin-android")
 }
 
 android {
     compileSdkVersion(Apps.compileSdk)
-    //buildToolsVersion("30.0.3")
 
     defaultConfig {
         applicationId = "com.eniola.studyapp"
@@ -22,6 +21,11 @@ android {
     }
 
     buildTypes {
+        getByName("debug") {
+            buildConfigField("String", "BASE_URL", "\"https://jackiechanbruteforce.ulesson.com/3p/api/\"")
+            applicationIdSuffix = ".dev"
+            versionNameSuffix = "-dev"
+        }
 
         getByName("release") {
             isMinifyEnabled = false
