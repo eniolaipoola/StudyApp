@@ -16,6 +16,7 @@ import kotlin.reflect.KClass
  * Created on 19-Jan-2021
  */
 
+@Suppress("UNCHECKED_CAST")
 @Singleton
 class ViewModelFactory @Inject constructor(
     private val viewModels: MutableMap<Class<out ViewModel>,
