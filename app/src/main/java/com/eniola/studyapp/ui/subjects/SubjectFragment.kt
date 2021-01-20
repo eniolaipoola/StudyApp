@@ -1,7 +1,6 @@
 package com.eniola.studyapp.ui.subjects
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -70,9 +69,6 @@ class SubjectFragment : BaseFragment(), SubjectListAdapter.SubjectClickedListene
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        //offline conscious, fetch all subject from database
-
         //fetch data in viewModel
         viewModel.fetchAllSubject()
         observeData()
@@ -101,6 +97,7 @@ class SubjectFragment : BaseFragment(), SubjectListAdapter.SubjectClickedListene
 
     override fun onResume() {
         super.onResume()
+
         //fetch data from database instead of API call
 
     }

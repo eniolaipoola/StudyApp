@@ -44,19 +44,18 @@ android {
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+
     implementation(Libs.kotlin)
     implementation(Libs.appcompat)
-
-    implementation("androidx.core:core-ktx:1.3.2")
-    implementation("androidx.appcompat:appcompat:1.2.0")
-    implementation("com.google.android.material:material:1.2.1")
-    implementation("androidx.constraintlayout:constraintlayout:2.0.4")
-    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    implementation("androidx.navigation:navigation-ui:${Versions.navigation}")
-    implementation("androidx.navigation:navigation-fragment:${Versions.navigation}")
-    implementation("androidx.navigation:navigation-fragment-ktx:${Versions.navigation}")
-    implementation("androidx.navigation:navigation-ui-ktx:${Versions.navigation}")
+    implementation(Libs.coreKtx)
+    implementation(Libs.materialDesign)
+    implementation(Libs.constraintLayout)
+    implementation(Libs.legacySupport)
+    implementation(Libs.navigationUi)
+    implementation(Libs.navigationFragment)
+    implementation(Libs.navigationFragmentKtx)
+    implementation(Libs.navigationUiKtx)
+    implementation(Libs.lifecycleExtension)
 
     //dagger dependencies
     implementation(Libs.dagger)
@@ -73,6 +72,9 @@ dependencies {
 
     implementation(Libs.liveData)
     implementation(Libs.viewModel)
+
+    //picasso
+    implementation(Libs.picasso)
 
     //Network Calls
     implementation(Libs.retrofit)

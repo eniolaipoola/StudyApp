@@ -9,13 +9,13 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="16dp"
     android:layout_marginStart="16dp"
+    app:cardCornerRadius="10dp"
     tools:ignore="RtlCompat, spUsage">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/lessonItem"
-        android:layout_width="200dp"
-        android:layout_height="220dp"
-        android:background="@drawable/background_subject_item"
+        android:layout_width="160dp"
+        android:layout_height="180dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="spUsage,RtlCompat">
@@ -23,14 +23,16 @@
         <ImageView
             android:id="@+id/lesson_icon"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="0dp"
             android:layout_marginStart="25dp"
             android:layout_marginEnd="25dp"
             android:src="@drawable/ic_subject_icon"
             android:layout_marginTop="25dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/lesson_title"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/lesson_title"

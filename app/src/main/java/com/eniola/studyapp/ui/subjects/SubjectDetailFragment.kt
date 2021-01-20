@@ -1,7 +1,6 @@
 package com.eniola.studyapp.ui.subjects
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -42,11 +41,8 @@ class SubjectDetailFragment : Fragment(), LessonsAdapter.LessonClickedListener {
         val bundle = arguments
         if(bundle != null){
             val subjectItem = bundle.getParcelable<SubjectData>("subject")
-            Log.d("tag", "subject name is " + subjectItem?.name)
-
             val subjectName = subjectItem?.name
             val allChapters = subjectItem?.chapters
-
             subject_name.text = subjectName
 
             //set chapters in a linear layout

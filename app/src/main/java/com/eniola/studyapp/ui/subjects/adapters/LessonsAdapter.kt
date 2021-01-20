@@ -1,13 +1,12 @@
 package com.eniola.studyapp.ui.subjects.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.eniola.studyapp.R
-import com.eniola.studyapp.ui.data.Chapters
 import com.eniola.studyapp.ui.data.Lessons
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_lessons.view.*
 
 class LessonsAdapter(private val lessonsClickedListener: LessonClickedListener)
@@ -36,11 +35,11 @@ class LessonsAdapter(private val lessonsClickedListener: LessonClickedListener)
         val item = lessonList[position]
         val lessonName = item.name
         holder.lessonTitle.text = lessonName
-        Log.d("tag", "lesson name is " + lessonName)
-        //holder.lessonIcon
-        //populate lesson recyclerview
 
-
+        val lessonImageUrl = item.icon
+        //load image url into imageView using picasso
+        Picasso.get().load(lessonImageUrl).placeholder(
+            R.drawable.ic_subject_icon).fit().into(holder.lessonIcon)
 
         holder.lessonItem.setOnClickListener {
             lessonsClickedListener.onLessonClicked(it, item)

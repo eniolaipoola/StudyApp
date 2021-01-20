@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.eniola.studyapp.R
 import com.eniola.studyapp.ui.data.SubjectData
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_all_subjects.view.*
 
 class SubjectListAdapter(private val subjectClicked: SubjectClickedListener)
@@ -34,14 +35,12 @@ class SubjectListAdapter(private val subjectClicked: SubjectClickedListener)
     override fun onBindViewHolder(holder: TransactionViewHolder, position: Int) {
         val item = subjectList[position]
         holder.subjectTitle.text = item.name
-/*
-        if(images.size != 0){
-            //load image url into imageView using picasso
-            val bookImageUrl = item.images[1].url
-            Picasso.get().load(bookImageUrl).placeholder(
-                R.drawable.ic_tj_image_placeholder).fit().into(holder.bookImage)
-        }
-*/
+
+        val iconImageUrl = item.icon
+        //load image url into imageView using picasso
+        Picasso.get().load(iconImageUrl).placeholder(
+            R.drawable.ic_subject_icon).fit().into(holder.subjectIcon)
+
 
         holder.subjectItem.setOnClickListener {
             subjectClicked.onSubjectClicked(it, item)

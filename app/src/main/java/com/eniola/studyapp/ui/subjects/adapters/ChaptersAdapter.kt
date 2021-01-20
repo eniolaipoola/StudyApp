@@ -59,6 +59,12 @@ class ChaptersAdapter(val listener: LessonsAdapter.LessonClickedListener)
 
     override fun onLessonClicked(view: View, item: Lessons) {
         //navigate to play video page
+
+        val mediaUrl = item.media_url
         Log.d("tag", "lesson clicked is " + item.name)
+        Log.d("tag", "media url is " + item.media_url)
+
+        //pass media url to play video page
+
     }
 }
