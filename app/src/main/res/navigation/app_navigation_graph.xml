@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_navigation_graph"
+    app:startDestination="@id/subjectFragment">
+
+    <fragment
+        android:id="@+id/subjectFragment"
+        android:name="com.eniola.studyapp.ui.subjects.SubjectFragment"
+        android:label="fragment_subject_fragment"
+        tools:layout="@layout/fragment_subject" >
+        <action
+            android:id="@+id/go_to_detail_page"
+            app:destination="@id/subjectDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/subjectDetailFragment"
+        android:name="com.eniola.studyapp.ui.subjects.SubjectDetailFragment"
+        android:label="fragment_subject_detail"
+        tools:layout="@layout/fragment_subject_detail" >
+        <action
+            android:id="@+id/go_to_play_lesson_page"
+            app:destination="@id/playLessonFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/playLessonFragment"
+        android:name="com.eniola.studyapp.ui.subjects.PlayLessonFragment"
+        android:label="fragment_play_lesson"
+        tools:layout="@layout/fragment_play_lesson" />
+
+</navigation>

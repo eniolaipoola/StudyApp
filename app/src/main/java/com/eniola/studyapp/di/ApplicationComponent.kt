@@ -1,6 +1,7 @@
 package com.eniola.studyapp.di
 
 import android.content.Context
+import com.eniola.studyapp.base.StudyApp
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector

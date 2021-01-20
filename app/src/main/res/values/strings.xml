@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">StudyApp</string>
+    <string name="user_name">Hello Simbi</string>
+    <string name="recently_watched_topics">Recently watched topics</string>
+    <string name="viewAll">View All</string>
+    <string name="subject_title">Mathematics</string>
+    <string name="chapter_text">Exam Test</string>
+    <string name="lesson">"Lesson "</string>
 </resources>
