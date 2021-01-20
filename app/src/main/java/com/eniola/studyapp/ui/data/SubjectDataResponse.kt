@@ -39,6 +39,7 @@ data class SubjectData(
 @Entity
 @Parcelize
 data class Chapters(
+    @PrimaryKey
     @SerializedName("id")
     val id: Int,
     @SerializedName("name")
@@ -50,6 +51,7 @@ data class Chapters(
 @Entity
 @Parcelize
 data class Lessons(
+    @PrimaryKey
     @SerializedName("id")
     val id: Int,
     @SerializedName("name")

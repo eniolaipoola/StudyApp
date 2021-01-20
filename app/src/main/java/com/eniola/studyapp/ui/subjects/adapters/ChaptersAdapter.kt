@@ -1,9 +1,9 @@
 package com.eniola.studyapp.ui.subjects.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.eniola.studyapp.R
@@ -48,23 +48,17 @@ class ChaptersAdapter(val listener: LessonsAdapter.LessonClickedListener)
         holder.lessonRecyclerView.layoutManager = lessonLayoutManager
         holder.lessonRecyclerView.adapter = lessonsAdapter
 
-
     }
 
     class ChaptersViewModel(view: View)
         : RecyclerView.ViewHolder(view) {
-        val chapterTitle = view.chapter_title
-        val lessonRecyclerView = view.chapter_lessons_recyclerview
+        val chapterTitle: TextView = view.chapter_title
+        val lessonRecyclerView: RecyclerView = view.chapter_lessons_recyclerview
     }
 
     override fun onLessonClicked(view: View, item: Lessons) {
-        //navigate to play video page
-
-        val mediaUrl = item.media_url
-        Log.d("tag", "lesson clicked is " + item.name)
-        Log.d("tag", "media url is " + item.media_url)
-
-        //pass media url to play video page
+        //pass lesson item to chapters page
+        listener.onLessonClicked(view, item)
 
     }
 }

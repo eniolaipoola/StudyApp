@@ -21,6 +21,7 @@ object Versions {
     const val constraintLayout = "2.0.4"
     const val legacySupport = "1.0.0"
     const val picasso = "2.71828"
+    const val exoPlayer = "2.9.0"
     /* test variable */
     const val junit = "4.12"
 }
@@ -55,6 +56,9 @@ object Libs {
     const val retrofitGsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
     const val okHttpLogging = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp}"
     const val picasso = "com.squareup.picasso:picasso:${Versions.picasso}"
+    const val exoPlayerCore = "com.google.android.exoplayer:exoplayer-core:${Versions.exoPlayer}"
+    const val exoPlayerDash = "com.google.android.exoplayer:exoplayer-dash:${Versions.exoPlayer}"
+    const val exoPlayerUi = "com.google.android.exoplayer:exoplayer-ui:${Versions.exoPlayer}"
 }
 
 object TestLibs {

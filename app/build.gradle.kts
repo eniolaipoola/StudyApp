@@ -62,6 +62,7 @@ dependencies {
     implementation(Libs.daggerAndroid)
     implementation(Libs.daggerAndroidSupport)
     implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlin_version"]}")
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
     kapt(Libs.daggerCompiler)
     kapt(Libs.daggerProcessor)
 
@@ -75,6 +76,12 @@ dependencies {
 
     //picasso
     implementation(Libs.picasso)
+
+    //######################## ExoPlayer ###########################
+    implementation(Libs.exoPlayerCore)
+    implementation(Libs.exoPlayerDash)
+    implementation(Libs.exoPlayerUi)
+
 
     //Network Calls
     implementation(Libs.retrofit)

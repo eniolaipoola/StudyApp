@@ -19,6 +19,15 @@
         android:id="@+id/subjectDetailFragment"
         android:name="com.eniola.studyapp.ui.subjects.SubjectDetailFragment"
         android:label="fragment_subject_detail"
-        tools:layout="@layout/fragment_subject_detail" />
+        tools:layout="@layout/fragment_subject_detail" >
+        <action
+            android:id="@+id/go_to_play_lesson_page"
+            app:destination="@id/playLessonFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/playLessonFragment"
+        android:name="com.eniola.studyapp.ui.subjects.PlayLessonFragment"
+        android:label="fragment_play_lesson"
+        tools:layout="@layout/fragment_play_lesson" />
 
 </navigation>

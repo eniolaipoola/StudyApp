@@ -38,13 +38,11 @@ class SubjectViewModel @Inject constructor(
             }) {
                 //save data in database
                 is ResultWrapper.Success -> when (val saveSubjectLocally = safeAPICall {
-                    val allSubjects = allSubjects.value.data.subjects
-                    database.subjectDao().insertAllSubjects(allSubjects)
+                    database.subjectDao().insertAllSubjects(allSubjects.value.data.subjects)
+                    //todo: save lesson an chapter in different table in database
                 }) {
                     is ResultWrapper.Success -> {
                         state.postValue(ViewState.LOADING(false))
-
-
                         //pass data to fragment class
                         val subjectList = allSubjects.value.data.subjects
                         val responseMessage = allSubjects.value.data.message
@@ -52,9 +50,8 @@ class SubjectViewModel @Inject constructor(
                     }
 
                     is ResultWrapper.Error ->  {
-                        val errorMessage = "An error occured while saving data"
                         state.postValue(ViewState.LOADING(false))
-                        state.postValue(errorMessage?.let { ViewState.ERROR(it) })
+                        state.postValue(saveSubjectLocally.errorMessage?.let { ViewState.ERROR(it) })
                     }
 
                 }

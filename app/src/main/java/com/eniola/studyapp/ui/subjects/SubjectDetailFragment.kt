@@ -37,7 +37,7 @@ class SubjectDetailFragment : Fragment(), LessonsAdapter.LessonClickedListener {
             findNavController().navigateUp()
         }
 
-        //GET PASSED subject bundle
+        //get passed subject bundle
         val bundle = arguments
         if(bundle != null){
             val subjectItem = bundle.getParcelable<SubjectData>("subject")
@@ -55,6 +55,10 @@ class SubjectDetailFragment : Fragment(), LessonsAdapter.LessonClickedListener {
     }
 
     override fun onLessonClicked(view: View, item: Lessons) {
-
+        //navigate to play video page
+        val mediaUrl = item.media_url
+        val bundle = Bundle()
+        bundle.putString("media", mediaUrl)
+        findNavController().navigate(R.id.go_to_play_lesson_page, bundle)
     }
 }
