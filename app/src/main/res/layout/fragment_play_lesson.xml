@@ -34,7 +34,7 @@
         tools:text="@string/subject_title" />
 
     <TextView
-        android:id="@+id/chapter_title"
+        android:id="@+id/lesson_title"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"

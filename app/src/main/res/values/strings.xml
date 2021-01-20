@@ -5,4 +5,5 @@
     <string name="viewAll">View All</string>
     <string name="subject_title">Mathematics</string>
     <string name="chapter_text">Exam Test</string>
+    <string name="lesson">"Lesson "</string>
 </resources>

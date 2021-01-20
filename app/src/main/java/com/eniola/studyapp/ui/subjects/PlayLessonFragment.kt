@@ -14,6 +14,7 @@ import androidx.lifecycle.observe
 import com.eniola.studyapp.R
 import com.eniola.studyapp.base.BaseFragment
 import com.eniola.studyapp.ui.data.Lessons
+import com.eniola.studyapp.ui.data.RecentActivity
 import com.eniola.studyapp.utility.toast
 import com.google.android.exoplayer2.*
 import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory
@@ -31,6 +32,8 @@ class PlayLessonFragment : BaseFragment(), Player.EventListener {
 
     private var exoPlayer: SimpleExoPlayer? = null
     var mediaUrl: String? = null
+    var lessonTitle: String? = null
+    var subjectName: String? = null
     var mediaSessionCompat: MediaSessionCompat? = null
     private val TAG = "media_session_tag"
     var stateCompatBuilder: PlaybackStateCompat.Builder? = null
@@ -38,7 +41,6 @@ class PlayLessonFragment : BaseFragment(), Player.EventListener {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private val viewModel by viewModels<SubjectViewModel> { viewModelFactory }
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -69,10 +71,13 @@ class PlayLessonFragment : BaseFragment(), Player.EventListener {
             val lessonItem = bundle.getParcelable<Lessons>("lesson")
             if (lessonItem != null) {
                 mediaUrl = lessonItem.media_url
+                lessonTitle = lessonItem.name
+                lesson_title.text = lessonTitle
+
                 //play url using exoplayer
                 initiateMediaPlayer(Uri.parse(mediaUrl))
 
-                //fetch lesson subject and chapter information
+                //fetch lesson's subject and chapter information
                 viewModel.fetchLessonDetails(lessonItem.subject_id)
 
             } else {
@@ -103,8 +108,6 @@ class PlayLessonFragment : BaseFragment(), Player.EventListener {
             exoPlayer!!.prepare(videoSource)
             exoPlayer!!.playWhenReady = true
 
-            //track media playing in recent activity
-            
         } else {
             Log.i("tag", "exoplayer is null")
         }
@@ -114,9 +117,6 @@ class PlayLessonFragment : BaseFragment(), Player.EventListener {
 
         override fun onPlay() {
             super.onPlay()
-
-            Log.d("tag", "this video was played here")
-            //save video in recent activity
         }
 
         override fun onPause() {
@@ -141,9 +141,22 @@ class PlayLessonFragment : BaseFragment(), Player.EventListener {
         viewModel.state.observe(viewLifecycleOwner){ viewstate ->
             if (viewstate is ViewState.SUBJECTDETAILS) {
                 val subjectInfo = viewstate.subjectInformation
-                val subjectName = subjectInfo.name
+                subjectName = subjectInfo.name
                 subject_name.text = subjectName
-                //chapter_title.text = subjectInfo.
+
+                //track media played in recent activity
+                val id = (0..10).random()
+                mediaUrl?.let {
+                    subjectName?.let { it1 ->
+                        lessonTitle?.let { it2 ->
+                            RecentActivity(id,
+                                it, it1, it2
+                            )
+                        }
+                    }
+                }?.let { viewModel.insertIntoRecentActivity(it) }
+
+
             }
         }
     }

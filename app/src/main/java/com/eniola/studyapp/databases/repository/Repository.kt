@@ -1,9 +1,8 @@
 package com.eniola.studyapp.databases.repository
 
 import com.eniola.studyapp.databases.AppRoomDatabase
-import com.eniola.studyapp.ui.data.Lessons
+import com.eniola.studyapp.ui.data.RecentActivity
 import com.eniola.studyapp.ui.data.SubjectData
-import com.eniola.studyapp.ui.data.SubjectInfo
 import javax.inject.Inject
 
 /**
@@ -17,6 +16,18 @@ class Repository @Inject constructor(private val database: AppRoomDatabase){
 
     suspend fun fetchSubjectDetails(subjectId:Int): SubjectData {
         return database.subjectDao().fetchSubjectDetail(subjectId)
+    }
+
+    suspend fun insertIntoRecentActivity(recentActivity: RecentActivity) {
+        return database.recentActivityDao().insertIntoRecentActivity(recentActivity)
+    }
+
+    suspend fun fetchAllRecentActivity(): List<RecentActivity>{
+        return database.recentActivityDao().fetchAll()
+    }
+
+    suspend fun fetchFewRecentActivity(): List<RecentActivity>{
+        return database.recentActivityDao().fetchFew()
     }
 
 }

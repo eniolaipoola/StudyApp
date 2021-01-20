@@ -1,6 +1,7 @@
 package com.eniola.studyapp.ui.subjects
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,9 +10,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.eniola.studyapp.R
 import com.eniola.studyapp.base.BaseFragment
+import com.eniola.studyapp.ui.data.RecentActivity
 import com.eniola.studyapp.ui.data.SubjectData
+import com.eniola.studyapp.ui.subjects.adapters.RecentActivityAdapter
 import com.eniola.studyapp.ui.subjects.adapters.SubjectListAdapter
 import com.eniola.studyapp.utility.hide
 import com.eniola.studyapp.utility.show
@@ -21,12 +25,12 @@ import javax.inject.Inject
 
 class SubjectFragment : BaseFragment(), SubjectListAdapter.SubjectClickedListener {
 
-    //viewModel
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private val viewModel by viewModels<SubjectViewModel> { viewModelFactory }
 
     private val adapter by lazy { SubjectListAdapter(this) }
+    private val recentActivityAdapter by lazy { RecentActivityAdapter() }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -63,6 +67,10 @@ class SubjectFragment : BaseFragment(), SubjectListAdapter.SubjectClickedListene
                         loader.hide()
                     }
                 }
+
+                is ViewState.RECENTACTIVITY -> {
+                    populateRecentActivity(viewState.recentActivity)
+                }
             }
         }
     }
@@ -71,7 +79,17 @@ class SubjectFragment : BaseFragment(), SubjectListAdapter.SubjectClickedListene
         super.onViewCreated(view, savedInstanceState)
         //fetch data in viewModel
         viewModel.fetchAllSubject()
+
+        //fetch all recent activities from database
+        viewModel.fetchFewRecentActivity()
+
+
+        view_all_recent_activity.setOnClickListener{
+            viewModel.fetchAllRecentActivity()
+        }
+
         observeData()
+
     }
 
     override fun onDestroy() {
@@ -95,10 +113,11 @@ class SubjectFragment : BaseFragment(), SubjectListAdapter.SubjectClickedListene
         findNavController().navigate(R.id.go_to_detail_page, bundle)
     }
 
-    override fun onResume() {
-        super.onResume()
-
-        //fetch data from database instead of API call
+    private fun populateRecentActivity(list: List<RecentActivity>){
+        recentActivityAdapter.setRecentActivityItem(list)
+        recent_activity_recyclerview.layoutManager = LinearLayoutManager(
+            context, LinearLayoutManager.VERTICAL, false)
+        recent_activity_recyclerview.adapter = recentActivityAdapter
 
     }
 }

@@ -1,6 +1,5 @@
 package com.eniola.studyapp.ui.subjects
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.eniola.studyapp.databases.AppRoomDatabase
@@ -8,8 +7,8 @@ import com.eniola.studyapp.databases.repository.Repository
 import com.eniola.studyapp.remote.NetworkService
 import com.eniola.studyapp.remote.api.ResultWrapper
 import com.eniola.studyapp.remote.api.safeAPICall
+import com.eniola.studyapp.ui.data.RecentActivity
 import com.eniola.studyapp.ui.data.SubjectData
-import com.eniola.studyapp.ui.data.SubjectInfo
 import com.eniola.studyapp.utility.runIO
 import kotlinx.coroutines.Job
 import javax.inject.Inject
@@ -73,12 +72,29 @@ class SubjectViewModel @Inject constructor(
     fun fetchLessonDetails(subjectId: Int){
         runIO {
             val subjectInfo = repository.fetchSubjectDetails(subjectId)
-            Log.d("tag", "subject information is " + subjectInfo.name)
+            //save all chapters in database
+            subjectInfo.chapters?.let { database.chaptersDao().insertChapter(it) }
             state.postValue(ViewState.SUBJECTDETAILS(subjectInfo))
         }
     }
 
+    fun insertIntoRecentActivity(recentActivity: RecentActivity){
+        runIO {
+            repository.insertIntoRecentActivity(recentActivity)
+        }
+    }
 
+    fun fetchFewRecentActivity(){
+        runIO {
+            state.postValue(ViewState.RECENTACTIVITY(repository.fetchFewRecentActivity()))
+        }
+    }
+
+    fun fetchAllRecentActivity(){
+        runIO {
+            state.postValue(ViewState.RECENTACTIVITY(repository.fetchAllRecentActivity()))
+        }
+    }
 
 }
 
@@ -87,5 +103,6 @@ sealed class ViewState {
     data class LOADING(val loading: Boolean = false) : ViewState()
     data class ERROR(val errorMessage: String): ViewState()
     data class SUBJECTDETAILS(val subjectInformation: SubjectData): ViewState()
+    data class RECENTACTIVITY(val recentActivity: List<RecentActivity>): ViewState()
 
 }

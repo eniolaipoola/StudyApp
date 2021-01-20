@@ -66,9 +66,15 @@ data class Lessons(
     val chapter_id: Int
 ): Parcelable
 
-data class SubjectInfo(
-    @SerializedName("chapters")
-    val chapters: String,
-    @SerializedName("name")
-    val name: String
+@Entity
+data class RecentActivity(
+    @PrimaryKey
+    @SerializedName("id")
+    val id: Int,
+    @SerializedName("mediaUrl")
+    val mediaUrl: String,
+    @SerializedName("subjectName")
+    val subjectName: String,
+    @SerializedName("lessonTitle")
+    val lessonTitle: String
 )

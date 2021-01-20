@@ -88,6 +88,10 @@ dependencies {
     implementation(Libs.okHttpLogging)
     implementation(Libs.retrofitGsonConverter)
 
+    //Glide
+    implementation("com.github.bumptech.glide:glide:4.8.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.8.0")
+
     testImplementation(TestLibs.junit)
     androidTestImplementation("androidx.test.ext:junit:1.1.2")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")

@@ -5,9 +5,11 @@ import androidx.room.*
 import com.eniola.studyapp.BuildConfig
 import com.eniola.studyapp.databases.daos.ChapterDao
 import com.eniola.studyapp.databases.daos.LessonDao
+import com.eniola.studyapp.databases.daos.RecentActivityDao
 import com.eniola.studyapp.databases.daos.SubjectDao
 import com.eniola.studyapp.ui.data.Chapters
 import com.eniola.studyapp.ui.data.Lessons
+import com.eniola.studyapp.ui.data.RecentActivity
 import com.eniola.studyapp.ui.data.SubjectData
 
 /**
@@ -16,7 +18,7 @@ import com.eniola.studyapp.ui.data.SubjectData
  * Created on 19-Jan-2021
  */
 
-@Database(entities = [SubjectData::class, Lessons::class, Chapters::class], version = 1, exportSchema = false)
+@Database(entities = [SubjectData::class, Lessons::class, Chapters::class, RecentActivity::class], version = 1, exportSchema = false)
 
 @TypeConverters(Converter::class)
 abstract class AppRoomDatabase: RoomDatabase()  {
@@ -40,5 +42,6 @@ abstract class AppRoomDatabase: RoomDatabase()  {
     abstract fun subjectDao(): SubjectDao
     abstract fun lessonDao(): LessonDao
     abstract fun chaptersDao(): ChapterDao
+    abstract fun recentActivityDao(): RecentActivityDao
 
 }
