@@ -26,6 +26,7 @@ import org.mockito.MockitoAnnotations
 @RunWith(JUnit4::class)
 class SubjectViewModelTest : TestCase() {
 
+/*
     @Mock
     lateinit var viewModel: SubjectViewModel
     @Mock
@@ -34,12 +35,15 @@ class SubjectViewModelTest : TestCase() {
     lateinit var networkService: NetworkService
     @Mock
     lateinit var repository: Repository
+*/
 
+/*
     @Before
     public override fun setUp() {
         MockitoAnnotations.initMocks(this)
         viewModel = SubjectViewModel(networkService, database, repository)
     }
+*/
 
 /*    @Test
     fun fetchSubjects(){
