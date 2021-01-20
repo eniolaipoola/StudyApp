@@ -1,9 +1,5 @@
 package com.eniola.studyapp.ui.subjects.adapters
 
-import android.content.Context
-import android.graphics.Bitmap
-import android.media.MediaMetadataRetriever
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.eniola.studyapp.R
 import com.eniola.studyapp.ui.data.RecentActivity
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_lessons.view.lesson_title
 import kotlinx.android.synthetic.main.item_recent_activity.view.*
 

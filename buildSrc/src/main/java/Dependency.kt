@@ -24,6 +24,8 @@ object Versions {
     const val exoPlayer = "2.9.0"
     /* test variable */
     const val junit = "4.12"
+    const val mockito = "1.10.19"
+    const val mockitoInline = "2.13.0"
 }
 
 object Libs {
@@ -63,4 +65,6 @@ object Libs {
 
 object TestLibs {
     const val junit = "junit:junit:${Versions.junit}"
+    const val mockito = "org.mockito:mockito-core:${Versions.mockito}"
+    const val mockitoInline = "testImplementation 'org.mockito:mockito-inline:${Versions.mockitoInline}"
 }

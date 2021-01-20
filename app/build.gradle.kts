@@ -93,6 +93,8 @@ dependencies {
     annotationProcessor("com.github.bumptech.glide:compiler:4.8.0")
 
     testImplementation(TestLibs.junit)
+    testImplementation(TestLibs.mockito)
+    testImplementation(TestLibs.mockitoInline)
     androidTestImplementation("androidx.test.ext:junit:1.1.2")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
 }
