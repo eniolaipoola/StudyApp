@@ -7,7 +7,5 @@ package com.eniola.studyapp.remote.api
  */
 
 data class StudyAppApiResponse<D>(
-    val status: String,
-    val data : D,
-    val message: String
+    val data : D
 )

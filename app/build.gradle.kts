@@ -1,17 +1,16 @@
 plugins {
     id("com.android.application")
     kotlin("android")
-    kotlin("kapt")
     kotlin("android.extensions")
     id("androidx.navigation.safeargs.kotlin")
     id("kotlin-android")
+    kotlin("kapt")
 }
 
 android {
     compileSdkVersion(Apps.compileSdk)
 
     defaultConfig {
-        applicationId = "com.eniola.studyapp"
         minSdkVersion(Apps.minSdk)
         targetSdkVersion(Apps.targetSdk)
         multiDexEnabled = true
@@ -39,7 +38,6 @@ android {
     }
 
     kotlinOptions {
-        this
         jvmTarget = "1.8"
     }
 }
@@ -62,6 +60,7 @@ dependencies {
 
     //dagger dependencies
     implementation(Libs.dagger)
+    implementation(Libs.daggerAndroid)
     implementation(Libs.daggerAndroidSupport)
     kapt(Libs.daggerCompiler)
     kapt(Libs.daggerProcessor)
