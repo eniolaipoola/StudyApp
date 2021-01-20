@@ -2,6 +2,7 @@ package com.eniola.studyapp.di
 
 import androidx.lifecycle.ViewModel
 import com.eniola.studyapp.MainActivity
+import com.eniola.studyapp.ui.subjects.PlayLessonFragment
 import com.eniola.studyapp.ui.subjects.SubjectFragment
 import com.eniola.studyapp.ui.subjects.SubjectViewModel
 import dagger.Binds
@@ -20,6 +21,9 @@ abstract class MainModule {
 
     @ContributesAndroidInjector(modules = [ViewModelBuilder::class])
     internal abstract fun subjectFragment(): SubjectFragment
+
+    @ContributesAndroidInjector(modules = [ViewModelBuilder::class])
+    internal abstract fun playLessonFragment(): PlayLessonFragment
 
     @ContributesAndroidInjector(modules = [ViewModelBuilder::class])
     internal abstract fun mainActivity(): MainActivity

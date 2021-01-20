@@ -41,7 +41,7 @@
             android:layout_marginBottom="10dp"
             tools:text="@string/subject_title"
             android:textAllCaps="false"
-            android:textColor="#171717"
+            android:textColor="@color/white"
             android:textSize="16dp"
             app:layout_constraintHeight_percent="0.25"
             app:layout_constraintEnd_toEndOf="parent"

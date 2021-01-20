@@ -65,3 +65,10 @@ data class Lessons(
     @SerializedName("chapter_id")
     val chapter_id: Int
 ): Parcelable
+
+data class SubjectInfo(
+    @SerializedName("chapters")
+    val chapters: String,
+    @SerializedName("name")
+    val name: String
+)

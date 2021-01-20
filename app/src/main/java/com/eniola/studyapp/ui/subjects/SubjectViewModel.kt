@@ -1,12 +1,15 @@
 package com.eniola.studyapp.ui.subjects
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.eniola.studyapp.databases.AppRoomDatabase
+import com.eniola.studyapp.databases.repository.Repository
 import com.eniola.studyapp.remote.NetworkService
 import com.eniola.studyapp.remote.api.ResultWrapper
 import com.eniola.studyapp.remote.api.safeAPICall
 import com.eniola.studyapp.ui.data.SubjectData
+import com.eniola.studyapp.ui.data.SubjectInfo
 import com.eniola.studyapp.utility.runIO
 import kotlinx.coroutines.Job
 import javax.inject.Inject
@@ -19,7 +22,8 @@ import javax.inject.Inject
 
 class SubjectViewModel @Inject constructor(
     private val networkService: NetworkService,
-    private val database: AppRoomDatabase
+    private val database: AppRoomDatabase,
+    private val repository: Repository
 ): ViewModel() {
 
     val state = MutableLiveData<ViewState>()
@@ -39,7 +43,6 @@ class SubjectViewModel @Inject constructor(
                 //save data in database
                 is ResultWrapper.Success -> when (val saveSubjectLocally = safeAPICall {
                     database.subjectDao().insertAllSubjects(allSubjects.value.data.subjects)
-                    //todo: save lesson an chapter in different table in database
                 }) {
                     is ResultWrapper.Success -> {
                         state.postValue(ViewState.LOADING(false))
@@ -65,8 +68,16 @@ class SubjectViewModel @Inject constructor(
             }
         }
 
-
     }
+
+    fun fetchLessonDetails(subjectId: Int){
+        runIO {
+            val subjectInfo = repository.fetchSubjectDetails(subjectId)
+            Log.d("tag", "subject information is " + subjectInfo.name)
+            state.postValue(ViewState.SUBJECTDETAILS(subjectInfo))
+        }
+    }
+
 
 
 }
@@ -75,5 +86,6 @@ sealed class ViewState {
     data class SUCCESS(val message: String, val data: List<SubjectData>): ViewState()
     data class LOADING(val loading: Boolean = false) : ViewState()
     data class ERROR(val errorMessage: String): ViewState()
+    data class SUBJECTDETAILS(val subjectInformation: SubjectData): ViewState()
 
 }

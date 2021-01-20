@@ -58,7 +58,7 @@ class SubjectDetailFragment : Fragment(), LessonsAdapter.LessonClickedListener {
         //navigate to play video page
         val mediaUrl = item.media_url
         val bundle = Bundle()
-        bundle.putString("media", mediaUrl)
+        bundle.putParcelable("lesson", item)
         findNavController().navigate(R.id.go_to_play_lesson_page, bundle)
     }
 }

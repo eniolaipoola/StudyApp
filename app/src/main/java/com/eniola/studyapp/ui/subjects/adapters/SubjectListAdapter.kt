@@ -1,5 +1,6 @@
 package com.eniola.studyapp.ui.subjects.adapters
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,10 +42,15 @@ class SubjectListAdapter(private val subjectClicked: SubjectClickedListener)
         Picasso.get().load(iconImageUrl).placeholder(
             R.drawable.ic_subject_icon).fit().into(holder.subjectIcon)
 
-
         holder.subjectItem.setOnClickListener {
             subjectClicked.onSubjectClicked(it, item)
         }
+
+        val mColors = arrayOf(
+            "#EA7052", "#7B7FDA", "#F9AD6D", "#68BC98", "#7B7FDA"
+        )
+        holder.subjectItem.setBackgroundColor(Color.parseColor(mColors[position]))
+
     }
 
     class TransactionViewHolder(view: View)

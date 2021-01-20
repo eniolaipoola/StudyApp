@@ -3,6 +3,7 @@ package com.eniola.studyapp.databases
 import android.content.Context
 import androidx.room.*
 import com.eniola.studyapp.BuildConfig
+import com.eniola.studyapp.databases.daos.ChapterDao
 import com.eniola.studyapp.databases.daos.LessonDao
 import com.eniola.studyapp.databases.daos.SubjectDao
 import com.eniola.studyapp.ui.data.Chapters
@@ -38,5 +39,6 @@ abstract class AppRoomDatabase: RoomDatabase()  {
 
     abstract fun subjectDao(): SubjectDao
     abstract fun lessonDao(): LessonDao
+    abstract fun chaptersDao(): ChapterDao
 
 }

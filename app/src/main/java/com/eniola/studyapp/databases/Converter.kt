@@ -23,7 +23,7 @@ class Converter {
     fun toChapter(chapterString: String): List<Chapters> {
         val gson = Gson()
         val type = object :
-            TypeToken<Chapters>() {}.type
+            TypeToken<List<Chapters>>() {}.type
         return gson.fromJson(chapterString, type)
     }
 
