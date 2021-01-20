@@ -3,7 +3,7 @@ package com.eniola.studyapp.databases.daos
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
-import com.eniola.studyapp.ui.subjects.SubjectData
+import com.eniola.studyapp.ui.data.SubjectData
 
 @Dao
 interface SubjectDao {

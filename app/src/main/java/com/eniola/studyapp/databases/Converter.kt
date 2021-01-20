@@ -1,7 +1,7 @@
 package com.eniola.studyapp.databases
 
 import androidx.room.TypeConverter
-import com.eniola.studyapp.ui.subjects.Chapters
+import com.eniola.studyapp.ui.data.Chapters
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 

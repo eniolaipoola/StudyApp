@@ -9,6 +9,16 @@
         android:id="@+id/subjectFragment"
         android:name="com.eniola.studyapp.ui.subjects.SubjectFragment"
         android:label="fragment_subject_fragment"
-        tools:layout="@layout/fragment_subject" />
+        tools:layout="@layout/fragment_subject" >
+        <action
+            android:id="@+id/go_to_detail_page"
+            app:destination="@id/subjectDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/subjectDetailFragment"
+        android:name="com.eniola.studyapp.ui.subjects.SubjectDetailFragment"
+        android:label="fragment_subject_detail"
+        tools:layout="@layout/fragment_subject_detail" />
 
 </navigation>

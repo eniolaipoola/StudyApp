@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.eniola.studyapp.R
-import com.eniola.studyapp.ui.subjects.SubjectData
+import com.eniola.studyapp.ui.data.SubjectData
 import kotlinx.android.synthetic.main.item_all_subjects.view.*
 
 class SubjectListAdapter(private val subjectClicked: SubjectClickedListener)
@@ -44,7 +44,7 @@ class SubjectListAdapter(private val subjectClicked: SubjectClickedListener)
 */
 
         holder.subjectItem.setOnClickListener {
-            subjectClicked.onTransactionClicked(it, item)
+            subjectClicked.onSubjectClicked(it, item)
         }
     }
 
@@ -56,7 +56,7 @@ class SubjectListAdapter(private val subjectClicked: SubjectClickedListener)
     }
 
     interface SubjectClickedListener {
-        fun onTransactionClicked(view: View, item: SubjectData)
+        fun onSubjectClicked(view: View, item: SubjectData)
     }
 
 }

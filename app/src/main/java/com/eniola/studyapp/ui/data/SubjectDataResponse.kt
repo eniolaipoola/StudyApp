@@ -1,4 +1,4 @@
-package com.eniola.studyapp.ui.subjects
+package com.eniola.studyapp.ui.data
 
 import android.os.Parcelable
 import androidx.room.Entity

@@ -1,7 +1,7 @@
 package com.eniola.studyapp.remote
 
 import com.eniola.studyapp.remote.api.StudyAppApiResponse
-import com.eniola.studyapp.ui.subjects.SubjectResponse
+import com.eniola.studyapp.ui.data.SubjectResponse
 import retrofit2.Retrofit
 import retrofit2.http.GET
 import javax.inject.Inject

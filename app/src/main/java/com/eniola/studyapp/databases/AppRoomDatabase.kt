@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.*
 import com.eniola.studyapp.BuildConfig
 import com.eniola.studyapp.databases.daos.SubjectDao
-import com.eniola.studyapp.ui.subjects.SubjectData
+import com.eniola.studyapp.ui.data.SubjectData
 
 /**
  * Copyright (c) 2021 Eniola Ipoola

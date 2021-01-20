@@ -8,10 +8,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.eniola.studyapp.R
 import com.eniola.studyapp.base.BaseFragment
+import com.eniola.studyapp.ui.data.SubjectData
 import com.eniola.studyapp.ui.subjects.adapters.SubjectListAdapter
 import com.eniola.studyapp.utility.hide
 import com.eniola.studyapp.utility.show
@@ -44,6 +45,7 @@ class SubjectFragment : BaseFragment(), SubjectListAdapter.SubjectClickedListene
         viewModel.state.observe(viewLifecycleOwner){viewState ->
             when (viewState) {
                 is ViewState.SUCCESS -> {
+                    loader.hide()
                     activity?.toast(viewState.message)
                     val subjectData = viewState.data
                     //populate subjects in recyclerview
@@ -55,6 +57,7 @@ class SubjectFragment : BaseFragment(), SubjectListAdapter.SubjectClickedListene
                 }
 
                 is ViewState.LOADING -> {
+                    loader.hide()
                     if(viewState.loading){
                         loader.show()
                     } else {
@@ -67,6 +70,8 @@ class SubjectFragment : BaseFragment(), SubjectListAdapter.SubjectClickedListene
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        //offline conscious, fetch all subject from database
 
         //fetch data in viewModel
         viewModel.fetchAllSubject()
@@ -87,7 +92,16 @@ class SubjectFragment : BaseFragment(), SubjectListAdapter.SubjectClickedListene
 
     }
 
-    override fun onTransactionClicked(view: View, item: SubjectData) {
-        Log.d("tag", "subject is clicked " + item.name)
+    override fun onSubjectClicked(view: View, item: SubjectData) {
+        val bundle = Bundle()
+        bundle.putParcelable("subject", item)
+        //navigate to subject detail page showing all
+        findNavController().navigate(R.id.go_to_detail_page, bundle)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        //fetch data from database instead of API call
+
     }
 }

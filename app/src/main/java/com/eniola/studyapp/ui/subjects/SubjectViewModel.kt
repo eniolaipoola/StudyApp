@@ -6,6 +6,7 @@ import com.eniola.studyapp.databases.AppRoomDatabase
 import com.eniola.studyapp.remote.NetworkService
 import com.eniola.studyapp.remote.api.ResultWrapper
 import com.eniola.studyapp.remote.api.safeAPICall
+import com.eniola.studyapp.ui.data.SubjectData
 import com.eniola.studyapp.utility.runIO
 import kotlinx.coroutines.Job
 import javax.inject.Inject
@@ -66,6 +67,8 @@ class SubjectViewModel @Inject constructor(
 
             }
         }
+
+
     }
 
 
